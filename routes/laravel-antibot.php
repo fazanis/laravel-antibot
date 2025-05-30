@@ -16,13 +16,7 @@ Route::post('/captcha_validate',function (\Illuminate\Http\Request $request){
             session(['captcha_passed'=>true]);
             return redirect()->intended('/');
         }
-//            if ($validator->fails()) {
-//                session(['captcha_passed'=>false]);
-//                return redirect()->back();
-//            } else {
-//                session(['captcha_passed'=>true]);
-//                return redirect()->back();
-//            }
+
 
 })->middleware('web')->name('send.captcha');
 
