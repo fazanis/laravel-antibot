@@ -1,0 +1,40 @@
+{
+    "name": "fazanis/laravel-block-bots",
+    "description": "Blocking bad bots Laravel and MoonShine",
+    "autoload": {
+        "psr-4": {
+            "Fazanis\\LaravelAntibot\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexandr Kravchuk",
+            "email": "kravchuk001@gmail.com",
+            "homepage": "https://github.com/fazanis"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "Fazanis\\LaravelAntibot\\Tests\\": "tests/",
+            "Fazanis\\LaravelAntibot\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+    },
+    "require": {
+        "php" : "^8.2",
+        "laravel/framework": "^10.0",
+        "jenssegers/agent": "^2.6",
+        "mews/captcha": "^3.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fazanis\\LaravelAntibot\\src\\Providers\\LaravelAntibotServiceProvider",
+                "Mews\\Captcha\\CaptchaServiceProvider"
+            ]
+        }
+    }
+}

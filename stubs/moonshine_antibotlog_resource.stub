@@ -1,0 +1,85 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {namespace};
+
+use Fazanis\LaravelAntibot\Models\AntibotLog;
+use Fazanis\LaravelAntibot\Models\BotsLog;
+use MoonShine\Laravel\Enums\Action;
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\Support\ListOf;
+use MoonShine\UI\Components\Layout\Box;
+use MoonShine\UI\Fields\Checkbox;
+use MoonShine\UI\Fields\Date;
+use MoonShine\UI\Fields\ID;
+use MoonShine\Contracts\UI\FieldContract;
+use MoonShine\UI\Fields\Switcher;
+use MoonShine\UI\Fields\Text;
+
+/**
+ * @extends ModelResource<BotsLog>
+ */
+class BotsLogResource extends ModelResource
+{
+    protected string $model = AntibotLog::class;
+
+    protected string $title = 'Лог посетителей';
+    protected array $with = ['bot'];
+    protected function activeActions(): ListOf
+    {
+        return new ListOf(Action::class, [Action::DELETE, Action::MASS_DELETE]);
+    }
+    protected function indexFields(): iterable
+    {
+        return [
+            ID::make()->sortable(),
+            Text::make('ip')->sortable(),
+            Text::make('user_agent')->sortable(),
+            Date::make('created_at')->sortable(),
+        ];
+    }
+
+    /**
+     * @return FieldContract
+     */
+    protected function formFields(): iterable
+    {
+        return [
+            Box::make([
+                ID::make(),
+                Text::make('ip'),
+                Text::make('user_agent'),
+                Checkbox::make('is_block')
+                    ->onValue(1)
+                    ->offValue(0),
+            ])
+        ];
+    }
+
+    /**
+     * @return list<FieldContract>
+     */
+    protected function detailFields(): iterable
+    {
+        return [
+            ID::make(),
+        ];
+    }
+
+    /**
+     * @param BotsLogs $item
+     *
+     * @return array<string, string[]|string>
+     * @see https://laravel.com/docs/validation#available-validation-rules
+     */
+    protected function rules(mixed $item): array
+    {
+        return [];
+    }
+
+    protected function topButtons(): ListOf
+    {
+        return parent::topButtons();
+    }
+}
