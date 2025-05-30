@@ -1,5 +1,5 @@
 {
-    "name": "fazanis/laravel-block-bots",
+    "name": "fazanis/laravel-antibot",
     "description": "Blocking bad bots Laravel and MoonShine",
     "autoload": {
         "psr-4": {
