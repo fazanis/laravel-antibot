@@ -32,7 +32,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Fazanis\\LaravelAntibot\\src\\Providers\\LaravelAntibotServiceProvider",
+                "Fazanis\\LaravelAntibot\\Providers\\LaravelAntibotServiceProvider",
                 "Mews\\Captcha\\CaptchaServiceProvider"
             ]
         }
