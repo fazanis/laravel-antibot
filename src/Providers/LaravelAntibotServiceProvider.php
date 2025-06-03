@@ -26,7 +26,7 @@ class LaravelAntibotServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
         $this->loadViewsFrom(__DIR__.'/../../resources/views/bots', 'bots');
         $this->loadRoutesFrom(__DIR__.'/../../routes/laravel-antibot.php');
-
+        config()->set('captcha.math', true);
         if ($this->app->runningInConsole()) {
             $this->commands([
                 MoonShineCommand::class,
